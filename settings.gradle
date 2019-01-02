@@ -1,0 +1,10 @@
+rootProject.name = 'MovieBrowser'
+
+//import ios lib when compile libs
+enableFeaturePreview('GRADLE_METADATA')
+
+include 'common'
+
+if (INCLUDE_ANDROID == "true") {
+    include 'android', 'android:app'
+}

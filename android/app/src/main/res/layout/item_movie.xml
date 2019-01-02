@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<android.support.v7.widget.CardView
+		android:id="@+id/card_view"
+		android:layout_gravity="center"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardBackgroundColor="@android:color/white"
+		app:cardCornerRadius="12dp">
+		<RelativeLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/ivPoster"
+				android:scaleType="centerCrop"
+				android:src="@drawable/ic_launcher_background"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"/>
+
+			<TextView
+				android:id="@+id/tvType"
+				android:padding="5dp"
+				android:layout_alignParentEnd="true"
+				android:background="@color/black_opacity_40"
+				android:textColor="@android:color/secondary_text_dark"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:text="Series"/>
+
+			<RelativeLayout
+				android:layout_alignBottom="@id/ivPoster"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<TextView
+					android:id="@+id/tvTitle"
+					android:paddingTop="5dp"
+					android:paddingStart="8dp"
+					android:paddingEnd="8dp"
+					android:background="@color/black_opacity_40"
+					android:textColor="@android:color/primary_text_dark"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					tools:text="Game of Throne"/>
+
+				<TextView
+					android:id="@+id/tvYear"
+					android:background="@color/black_opacity_40"
+					android:paddingBottom="5dp"
+					android:paddingStart="8dp"
+					android:paddingEnd="8dp"
+					android:textColor="@android:color/secondary_text_dark"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/tvTitle"
+					tools:text="2011-"/>
+			</RelativeLayout>
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

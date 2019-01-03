@@ -4,7 +4,7 @@
 
 Kotlin multiplatform sample for iOS and Android Apps. 
 
-For detail please check this article
+For detail please check this [article](https://medium.com/@aldychris/kotlin-multiplatform-for-ios-and-android-mobile-application-96a753e175f7) 
 
 
 ## How To...

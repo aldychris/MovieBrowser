@@ -1,0 +1,50 @@
+//apply plugin: 'kotlin-platform-common'
+apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-dce-js'
+apply plugin: 'com.eriwen.gradle.js'
+
+dependencies {
+    compile project(':common')
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+
+    implementation "io.ktor:ktor-client-js:$ktor_version"
+    implementation "io.ktor:ktor-client-core-js:$ktor_version"
+    implementation "io.ktor:ktor-client-json-js:$ktor_version"
+    implementation "io.ktor:ktor-client-logging-js:$ktor_version"
+}
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.moduleKind = 'umd'
+    kotlinOptions.main = "call"
+    kotlinOptions.sourceMapEmbedSources = "always"
+}
+
+combineJs {
+    
+    source = [
+            "${buildDir}/kotlin-js-min/main/kotlin.js",
+
+            "${buildDir}/kotlin-js-min/main/kotlinx-atomicfu.js",
+            "${buildDir}/kotlin-js-min/main/kotlinx-io-js.js",
+            "${buildDir}/kotlin-js-min/main/kotlinx-coroutines-core.js",
+            "${buildDir}/kotlin-js-min/main/kotlinx-coroutines-io-js.js",
+            "${buildDir}/kotlin-js-min/main/ktor-utils-js.js",
+            "${buildDir}/kotlin-js-min/main/ktor-http-js.js",
+            "${buildDir}/kotlin-js-min/main/ktor-client-core-js.js",
+            "${buildDir}/kotlin-js-min/main/kotlinx-serialization-runtime-js.js",
+            "${buildDir}/kotlin-js-min/main/ktor-client-json-js.js",
+            "${buildDir}/kotlin-js-min/main/ktor-client-logging-js.js",
+
+            "${buildDir}/kotlin-js-min/main/common.js",
+            "${buildDir}/kotlin-js-min/main/jsapp.js"
+    ]
+    dest = file("${temporaryDir}/${archivesBaseName}-combined.js")
+}
+
+combineJs.dependsOn runDceKotlinJs
+build.dependsOn combineJs

@@ -9,6 +9,8 @@ kotlin {
         fromPreset(presets.iosX64, 'ios') {
             compilations.main.outputKinds('FRAMEWORK')
         }
+
+        fromPreset(presets.js, 'js')
     }
 
     sourceSets {
@@ -71,6 +73,34 @@ kotlin {
                 implementation "io.ktor:ktor-client-core-ios:$ktor_version"
                 implementation "io.ktor:ktor-client-json-ios:$ktor_version"
                 implementation "io.ktor:ktor-client-logging-ios:$ktor_version"
+            }
+        }
+        jsMain {
+            kotlin.srcDir('src/jsMain/kotlin')
+
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
+
+                implementation "io.ktor:ktor-client-js:$ktor_version"
+                implementation "io.ktor:ktor-client-core-js:$ktor_version"
+                implementation "io.ktor:ktor-client-json-js:$ktor_version"
+                implementation "io.ktor:ktor-client-logging-js:$ktor_version"
+            }
+
+            compileKotlinJs {
+                kotlinOptions.metaInfo = true
+                kotlinOptions.sourceMap = true
+                kotlinOptions.suppressWarnings = true
+                kotlinOptions.verbose = true
+                kotlinOptions.main = "call"
+                kotlinOptions.moduleKind = "umd"
+                kotlinOptions.sourceMapEmbedSources = "always"
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
             }
         }
     }

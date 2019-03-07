@@ -18,4 +18,13 @@ data class MovieViewModel (
             )
         }
     }
+
+    fun parseForFlutter(): Map<String, String> {
+        return mapOf(
+                "title" to this.title,
+                "year" to this.year,
+                "type" to this.type,
+                "imgUrl" to this.imgUrl
+        )
+    }
 }

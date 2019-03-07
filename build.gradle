@@ -20,6 +20,8 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
+        
         maven { url "http://kotlin.bintray.com/kotlin-eap" }
         maven { url "http://kotlin.bintray.com/kotlin-dev" }
         maven { url "https://kotlin.bintray.com/kotlinx" }
@@ -32,3 +34,5 @@ allprojects {
         jcenter()
     }
 }
+
+apply from: './publish_artifact.gradle'

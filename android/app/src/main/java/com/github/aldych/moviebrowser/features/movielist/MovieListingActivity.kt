@@ -2,7 +2,8 @@ package com.github.aldych.moviebrowser.features.movielist
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.*
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -16,7 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import org.jetbrains.anko.*
 import presentation.movielist.MovieListPresenter
 import presentation.movielist.MovieListView
-import java.util.logging.Logger
 
 class MovieListingActivity : AppCompatActivity(), AnkoLogger, MovieListView {
 

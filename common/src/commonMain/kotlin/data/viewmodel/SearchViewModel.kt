@@ -18,4 +18,14 @@ data class SearchViewModel(
         }
     }
 
+    fun parseForFlutter(): List<Map<String, String>> {
+
+        val listMov = ArrayList<Map<String, String>>()
+        for (mdl in this.movies){
+            listMov.add(mdl.parseForFlutter())
+        }
+
+        return listMov
+    }
+
 }
